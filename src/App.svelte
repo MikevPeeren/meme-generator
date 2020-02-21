@@ -1,5 +1,5 @@
 <script>
-    import ImageUploader from './components/ImageUploader.svelte';
+    import MemeGenerator from './MemeGenerator.svelte';
 </script>
 
 <style>
@@ -22,20 +22,10 @@
             max-width: none;
         }
     }
-
-    .memeCanvas {
-        margin: 20px;
-        border: 1px solid #000000;
-        border-radius: 5px;
-        width: 500px;
-        height: 400px;
-    }
 </style>
 
 <main>
     <h1>Meme Generator!</h1>
 
-    <ImageUploader />
-
-    <canvas class="memeCanvas" id="memeCanvas" />
+    <MemeGenerator />
 </main>
