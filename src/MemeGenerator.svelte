@@ -46,6 +46,7 @@
 
         const memeCanvasContext = memeCanvas.getContext('2d');
 
+        // TODO: Rerender based on change of FontSize and Text-Colour ?
         memeCanvasContext.font = `${fontSize}px Comic Sans`;
         memeCanvasContext.fillStyle = textColour;
         memeCanvasContext.textAlign = 'center';
@@ -101,6 +102,7 @@
         <input placeholder="Top Text" maxlength="20" bind:value={textTop} on:change={() => placeText('top')} />
         <input placeholder="Bottom Text" maxlength="20" bind:value={textBottom} on:change={() => placeText('bottom')} />
     </div>
+    <!-- TODO: Change the layout -->
     <div>
         <label for="font-size">Font Size in pixels</label>
         <input id="font-size" maxlength="10" bind:value={fontSize} />
