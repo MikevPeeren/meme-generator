@@ -6,6 +6,9 @@
     let textBottom = '';
     let warningText = '';
 
+    let fontSize = 200;
+    let textColour = '#000000';
+
     const reader = new FileReader();
 
     let memeCanvas;
@@ -43,7 +46,8 @@
 
         const memeCanvasContext = memeCanvas.getContext('2d');
 
-        memeCanvasContext.font = '200px Comic Sans';
+        memeCanvasContext.font = `${fontSize}px Comic Sans`;
+        memeCanvasContext.fillStyle = textColour;
         memeCanvasContext.textAlign = 'center';
 
         if (textTop === '' && textBottom === '') return;
@@ -82,7 +86,7 @@
 </style>
 
 <div>
-    <label for="meme">Upload Your Meme</label>
+    <label>Upload Your Image</label>
 
     <div>
         <input on:change={event => uploadImage(event)} type="file" id="selectedFile" style="display: none;" />
@@ -94,8 +98,16 @@
     <div class="errorMessage">{warningText}</div>
 
     <div>
-        <input placeholder="Top Text" bind:value={textTop} on:change={() => placeText('top')} />
-        <input placeholder="Bottom Text" bind:value={textBottom} on:change={() => placeText('bottom')} />
+        <input placeholder="Top Text" maxlength="20" bind:value={textTop} on:change={() => placeText('top')} />
+        <input placeholder="Bottom Text" maxlength="20" bind:value={textBottom} on:change={() => placeText('bottom')} />
+    </div>
+    <div>
+        <label for="font-size">Font Size in pixels</label>
+        <input id="font-size" maxlength="10" bind:value={fontSize} />
+    </div>
+    <div>
+        <label for="text-colour">Colour in hex</label>
+        <input id="text-colour" maxlength="10" bind:value={textColour} />
     </div>
     <input type="button" value="Clear Text" on:click={() => drawCanvas(image, file)} />
 </div>
