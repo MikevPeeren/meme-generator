@@ -1,23 +1,24 @@
 <script>
     let image = null;
     let file = null;
+
     let textTop = '';
     let textBottom = '';
+    let warningText = '';
 
     const reader = new FileReader();
 
+    let memeCanvas;
+
     function uploadImage(event) {
         // For future redrawing purposes
-        const img = new Image();
-        image = img;
+        image = new Image();
         file = event.target.files[0];
 
         drawCanvas(image, event.target.files[0]);
     }
 
     function drawCanvas(image, file) {
-        // TODO: bind somehow ?
-        const memeCanvas = document.getElementById('memeCanvas');
         const memeCanvasContext = memeCanvas.getContext('2d');
 
         reader.onload = function(event) {
@@ -33,16 +34,23 @@
     }
 
     function placeText(placement) {
-        // TODO: bind somehow ?
-        const memeCanvas = document.getElementById('memeCanvas');
+        if (!image) {
+            warningText = 'Please upload an image first';
+            return;
+        }
+
+        warningText = '';
+
         const memeCanvasContext = memeCanvas.getContext('2d');
 
         memeCanvasContext.font = '200px Comic Sans';
+        memeCanvasContext.textAlign = 'center';
 
         if (textTop === '' && textBottom === '') return;
 
         // Minus 200 because font size is 200px
-        const centeredText = memeCanvas.width / 2 - 200;
+        console.log(textTop.length);
+        const centeredText = memeCanvas.width / 2;
 
         // TODO: Placement needs to be finetuned.
         if (placement === 'top') memeCanvasContext.fillText(textTop, centeredText, 150);
@@ -60,11 +68,18 @@
     }
 
     .memeCanvas {
-        margin: 15px;
+        margin: 10px;
         border: 1px solid #000000;
         border-radius: 5px;
         width: 500px;
         height: 400px;
+    }
+
+    .errorMessage {
+        color: #ff3e00;
+        text-transform: uppercase;
+        font-size: 1.5em;
+        font-weight: 100;
     }
 </style>
 
@@ -75,7 +90,10 @@
         <input on:change={event => uploadImage(event)} type="file" id="selectedFile" style="display: none;" />
         <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
     </div>
-    <canvas class="memeCanvas" id="memeCanvas" />
+
+    <canvas bind:this={memeCanvas} class="memeCanvas" id="memeCanvas" />
+
+    <div class="errorMessage">{warningText}</div>
 
     <div>
         <input placeholder="Top Text" bind:value={textTop} on:change={() => placeText('top')} />
