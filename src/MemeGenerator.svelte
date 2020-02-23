@@ -39,7 +39,7 @@
             return;
         }
 
-        warningText = '';
+        if (warningText !== '') warningText = '';
 
         const memeCanvasContext = memeCanvas.getContext('2d');
 
@@ -49,10 +49,8 @@
         if (textTop === '' && textBottom === '') return;
 
         // Minus 200 because font size is 200px
-        console.log(textTop.length);
         const centeredText = memeCanvas.width / 2;
 
-        // TODO: Placement needs to be finetuned.
         if (placement === 'top') memeCanvasContext.fillText(textTop, centeredText, 150);
         if (placement === 'bottom') memeCanvasContext.fillText(textBottom, centeredText, memeCanvas.height - 100);
     }
