@@ -509,10 +509,10 @@ serialize-javascript@^3.0.0:
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-3.0.0.tgz#492e489a2d77b7b804ad391a5f5d97870952548e"
   integrity sha512-skZcHYw2vEX4bw90nAr2iTTsz6x2SrHEnfxgKYmZlvJYBEZrvbKtobJWlQ20zczKb3bsHHXXTYt48zBA7ni9cw==
 
-sirv-cli@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/sirv-cli/-/sirv-cli-1.0.1.tgz#bc8a307be57f1c1500802ad2e699f4435013ffe9"
-  integrity sha512-Hu/9NlWea8tBCyvNoABIsvUEOUhaH5gCMw1dz58sxDwr9vuc+KsBZ+aNMvxqUyewXopsLeqHXqJ4521i/FjAtg==
+sirv-cli@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/sirv-cli/-/sirv-cli-1.0.2.tgz#aecb518d61dc11f2fa22a77649640d5cbb8708ba"
+  integrity sha512-uwxUX6and/Ra74GTJM/z0JPcFI7GPVCT3lKuEc6A/1CfdRbldi/0ztvEJOEl1OzpcmSOo/U+3PRXts0xEVM34A==
   dependencies:
     console-clear "^1.1.0"
     get-port "^3.2.0"
